@@ -1,0 +1,20 @@
+{
+    "name": "rainforest-mqtt-bridge",
+    "version": "0.0.1",
+    "description": "Bridge Rainforest Energy Monitor via HTTP to and from MQTT",
+    "license": "MIT",
+    "main": "rainforest-mqtt-bridge.js",
+    "scripts": {
+        "start": "rainforest-mqtt-bridge.js"
+    },
+    "dependencies": {
+        "request": "^2.81.0",
+        "mqtt": "^2.6.2",
+        "repeat": "^0.0.6",
+        "xml2js": "^0.4.17",
+        "url": "^0.11.0"
+    },
+    "engines": {
+        "node": ">=4"
+    }
+}

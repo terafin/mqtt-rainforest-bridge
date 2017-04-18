@@ -3,6 +3,7 @@ mqtt = require('mqtt')
 
 logging = require('./homeautomation-js-lib/logging.js')
 rainforest = require('./homeautomation-js-lib/rainforest.js')
+mqtt_helpers = require('./homeautomation-js-lib/mqtt_helpers.js')
 
 
 // Config
@@ -39,7 +40,7 @@ function rainforest_update(result) {
                 value = Number(value) * 1000
 
             logging.log(" " + key + ":" + value)
-            client.publish(rainforest_topic + "/" + key, "" + value)
+            mqtt_helpers.publish(client, rainforest_topic + "/" + key, "" + value)
         }
     )
 }

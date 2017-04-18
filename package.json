@@ -1,14 +1,14 @@
 {
-    "name": "rainforest-mqtt-bridge",
+    "name": "mqtt-rainforest-bridge",
     "version": "0.0.1",
     "description": "Bridge Rainforest Energy Monitor via HTTP to and from MQTT",
     "license": "MIT",
-    "main": "rainforest-mqtt-bridge.js",
+    "main": "mqtt-rainforest-bridge.js",
     "repository": {
-        "url": "https://github.com/terafin/rainforest-mqtt-bridge"
+        "url": "https://github.com/terafin/mqtt-rainforest-bridge"
     },
     "scripts": {
-        "start": "node rainforest-mqtt-bridge.js"
+        "start": "node mqtt-rainforest-bridge.js"
     },
     "dependencies": {
         "request": "^2.81.0",

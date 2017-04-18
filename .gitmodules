@@ -1,0 +1,3 @@
+[submodule "homeautomation-js-lib"]
+	path = homeautomation-js-lib
+	url = https://github.com/terafin/homeautomation-js-lib

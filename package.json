@@ -8,7 +8,7 @@
         "url": "https://github.com/terafin/rainforest-mqtt-bridge"
     },
     "scripts": {
-        "start": "rainforest-mqtt-bridge.js"
+        "start": "node rainforest-mqtt-bridge.js"
     },
     "dependencies": {
         "request": "^2.81.0",

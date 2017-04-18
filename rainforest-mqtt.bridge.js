@@ -1,19 +1,19 @@
 // Requirements
 mqtt = require('mqtt')
-url = require('url')
 
 logging = require('./homeautomation-js-lib/logging.js')
-airscape = require('./homeautomation-js-lib/airscape.js')
+rainforest = require('./homeautomation-js-lib/rainforest.js')
 
 
 // Config
-set_string = "/set"
 host = process.env.MQTT_HOST
-airscape_ip = process.env.AIRSCAPE_IP
-airscape_topic = process.env.AIRSCAPE_TOPIC
+rainforest_ip = process.env.RAINFOREST_IP
+rainforest_user = process.env.RAINFOREST_USER
+rainforest_pass = process.env.RAINFOREST_PASSWORD
+rainforest_topic = process.env.RAINFOREST_TOPIC
 
 // Set up modules
-logging.set_enabled(false)
+logging.set_enabled(true)
 
 // Setup MQTT
 client = mqtt.connect(host)
@@ -22,7 +22,6 @@ client = mqtt.connect(host)
 
 client.on('connect', () => {
     logging.log('Reconnecting...\n')
-    client.subscribe(airscape_topic + set_string)
 })
 
 client.on('disconnect', () => {
@@ -30,11 +29,7 @@ client.on('disconnect', () => {
     client.connect(host)
 })
 
-client.on('message', (topic, message) => {
-    airscape.set_speed(parseInt(message))
-})
-
-function airscape_fan_update(result) {
+function rainforest_update(result) {
     speed = result.fanspd
     logging.log("Airscape updated")
     logging.log(" speed:" + result.fanspd)
@@ -49,5 +44,7 @@ function airscape_fan_update(result) {
     client.publish(airscape_topic, "" + result.fanspd)
 }
 
-airscape.set_ip(airscape_ip)
-airscape.set_callback(airscape_fan_update)
+rainforest.set_ip(rainforest_ip)
+rainforest.set_user_pass(rainforest_user, rainforest_pass)
+
+rainforest.set_callback(rainforest_update)

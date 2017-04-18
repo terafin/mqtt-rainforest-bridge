@@ -4,6 +4,9 @@
     "description": "Bridge Rainforest Energy Monitor via HTTP to and from MQTT",
     "license": "MIT",
     "main": "rainforest-mqtt-bridge.js",
+    "repository": {
+        "url": "https://github.com/terafin/rainforest-mqtt-bridge"
+    },
     "scripts": {
         "start": "rainforest-mqtt-bridge.js"
     },

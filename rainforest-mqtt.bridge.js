@@ -2,8 +2,8 @@
 mqtt = require('mqtt')
 url = require('url')
 
-logging = require('./lib/logging.js')
-airscape = require('./lib/airscape.js')
+logging = require('./homeautomation-js-lib/logging.js')
+airscape = require('./homeautomation-js-lib/airscape.js')
 
 
 // Config

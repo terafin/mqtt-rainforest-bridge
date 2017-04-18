@@ -13,7 +13,7 @@ rainforest_pass = process.env.RAINFOREST_PASSWORD
 rainforest_topic = process.env.RAINFOREST_TOPIC
 
 // Set up modules
-logging.set_enabled(true)
+logging.set_enabled(false)
 
 // Setup MQTT
 client = mqtt.connect(host)
@@ -30,18 +30,18 @@ client.on('disconnect', () => {
 })
 
 function rainforest_update(result) {
-    speed = result.fanspd
-    logging.log("Airscape updated")
-    logging.log(" speed:" + result.fanspd)
-    logging.log(" doorinprocess:" + result.doorinprocess)
-    logging.log(" timeremaining:" + result.timeremaining)
-    logging.log(" cfm:" + result.cfm)
-    logging.log(" power:" + result.power)
-    logging.log(" house_temp:" + result.house_temp)
-    logging.log(" attic_temp:" + result.attic_temp)
-    logging.log(" oa_temp:" + result.oa_temp)
+    logging.log("Rainforest updated: " + Object.keys(result))
 
-    client.publish(airscape_topic, "" + result.fanspd)
+    Object.keys(result).forEach(
+        function(key) {
+            value = result[key]
+            if (key === 'demand')
+                value = Number(value) * 1000
+
+            logging.log(" " + key + ":" + value)
+            client.publish(rainforest_topic + "/" + key, "" + value)
+        }
+    )
 }
 
 rainforest.set_ip(rainforest_ip)

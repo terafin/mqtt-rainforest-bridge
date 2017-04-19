@@ -35,7 +35,10 @@ function rainforest_update(result) {
 
     Object.keys(result).forEach(
         function(key) {
+            if (key === 'demand_timestamp') return
+
             value = result[key]
+
             if (key === 'demand')
                 value = Number(value) * 1000
 

@@ -3,6 +3,8 @@ const mqtt = require('mqtt')
 
 const logging = require('./homeautomation-js-lib/logging.js')
 const rainforest = require('./homeautomation-js-lib/rainforest.js')
+const health = require('./homeautomation-js-lib/health.js')
+
 require('./homeautomation-js-lib/mqtt_helpers.js')
 
 
@@ -14,6 +16,9 @@ const client = mqtt.setupClient(null, null)
 
 rainforest.on('energy-updated', (result) => {
     logging.log('Rainforest updated: ' + Object.keys(result))
+
+    if (client.connected())
+        health.healthyEvent()
 
     Object.keys(result).forEach(
         function(key) {

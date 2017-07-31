@@ -17,7 +17,7 @@ const client = mqtt.setupClient(null, null)
 rainforest.on('energy-updated', (result) => {
     logging.log('Rainforest updated: ' + Object.keys(result))
 
-    if (client.connected())
+    if (client.connected)
         health.healthyEvent()
 
     Object.keys(result).forEach(

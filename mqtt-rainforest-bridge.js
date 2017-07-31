@@ -1,5 +1,6 @@
 // Requirements
 const mqtt = require('mqtt')
+const _ = require('lodash')
 
 const logging = require('./homeautomation-js-lib/logging.js')
 const rainforest = require('./homeautomation-js-lib/rainforest.js')
@@ -34,3 +35,10 @@ rainforest.on('energy-updated', (result) => {
         }
     )
 })
+
+const healthCheckPort = process.env.HEALTH_CHECK_PORT
+const healthCheckTime = process.env.HEALTH_CHECK_TIME
+const healthCheckURL = process.env.HEALTH_CHECK_URL
+if (!_.isNil(healthCheckPort) && !_.isNil(healthCheckTime) && !_.isNil(healthCheckURL)) {
+    health.startHealthChecks(healthCheckURL, healthCheckPort, healthCheckTime)
+}

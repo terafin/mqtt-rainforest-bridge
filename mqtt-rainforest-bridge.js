@@ -2,11 +2,11 @@
 const mqtt = require('mqtt')
 const _ = require('lodash')
 
-const logging = require('./homeautomation-js-lib/logging.js')
-const rainforest = require('./homeautomation-js-lib/rainforest.js')
-const health = require('./homeautomation-js-lib/health.js')
+const logging = require('homeautomation-js-lib/logging.js')
+const rainforest = require('homeautomation-js-lib/rainforest.js')
+const health = require('homeautomation-js-lib/health.js')
 
-require('./homeautomation-js-lib/mqtt_helpers.js')
+require('homeautomation-js-lib/mqtt_helpers.js')
 
 
 // Config

@@ -16,7 +16,7 @@ const rainforest_topic = process.env.RAINFOREST_TOPIC
 const client = mqtt.setupClient(null, null)
 
 rainforest.on('energy-updated', (result) => {
-    logging.log('Rainforest updated: ' + Object.keys(result))
+    logging.info('Rainforest updated: ' + Object.keys(result))
 
     if (client.connected)
         health.healthyEvent()
@@ -30,7 +30,7 @@ rainforest.on('energy-updated', (result) => {
             if (key === 'demand')
                 value = Number(value) * 1000
 
-            logging.log(' ' + key + ':' + value)
+            logging.info(' ' + key + ':' + value)
             client.smartPublish(rainforest_topic + '/' + key, '' + value)
         }
     )

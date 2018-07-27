@@ -1,7 +1,7 @@
 {
     "name": "mqtt-rainforest-bridge",
     "version": "0.0.1",
-    "description": "Bridge Rainforest Energy Monitor via HTTP to and from MQTT",
+    "description": "Bridge Rainforest Energy Monitor via HTTP to MQTT",
     "license": "MIT",
     "main": "mqtt-rainforest-bridge.js",
     "repository": {
@@ -12,8 +12,8 @@
     },
     "dependencies": {
         "homeautomation-js-lib": "git://github.com/terafin/homeautomation-js-lib.git",
-        "lodash": "^4.17.4",
-        "mqtt": "^2.15.0"
+        "lodash": "latest",
+        "mqtt": "latest"
     },
     "engines": {
         "node": ">=4"

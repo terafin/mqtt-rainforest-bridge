@@ -10,8 +10,8 @@
 | MQTT_PASS           | "mqtt username"                                      | *OPTIONAL*      |
 | TOPIC_PREFIX        | "/your/topic/prefix"                                 | **REQUIRED**    |
 | RAINFOREST_IP       | YOUR.RAINFOREST.IP.OR.HOSTNAME                       | **REQUIRED**    |
-| RAINFOREST_USER     | "your rainforest username (on the device itself)"    | **REQUIRED**    |
-| RAINFOREST_PASS     | "your rainforest password"                           | **REQUIRED**    |
+| RAINFOREST_USER     | "your rainforest username (on the device itself)"    | *OPTIONAL*      |
+| RAINFOREST_PASS     | "your rainforest password"                           | *OPTIONAL*      |
 
 ## Example Usage
 

@@ -1,27 +1,37 @@
 
-# mqtt-rainforest-bridge
+# Rainforest -> MQTT Bridge
 
-# Required environment variables
+## Required environment variables
 
-|         | ENV VARIABLE           | EXAMPLE  |
-| ------------- |:-------------| -----:|
-REQUIRED | MQTT_HOST | "mqtt://your-mqtt.server.here"
-OPTIONAL | MQTT_USER | "mqtt username"
-OPTIONAL | MQTT_PASS | "mqtt username"
-REQUIRED | TOPIC_PREFIX | "/your/topic/prefix"
-REQUIRED | RAINFOREST_IP | YOUR.RAINFOREST.IP.OR.HOSTNAME
-REQUIRED | RAINFOREST_USER | "your rainforest username (on the device itself)"
-REQUIRED | RAINFOREST_PASS | "your rainforest password"
+| ENV VARIABLE        | EXAMPLE                                              |                 |
+|---------------------| -----------------------------------------------------| --------------- |
+| MQTT_HOST           | "mqtt://your-mqtt.server.here"                       | **REQUIRED**    |
+| MQTT_USER           | "mqtt username"                                      | *OPTIONAL*      |
+| MQTT_PASS           | "mqtt username"                                      | *OPTIONAL*      |
+| TOPIC_PREFIX        | "/your/topic/prefix"                                 | **REQUIRED**    |
+| RAINFOREST_IP       | YOUR.RAINFOREST.IP.OR.HOSTNAME                       | **REQUIRED**    |
+| RAINFOREST_USER     | "your rainforest username (on the device itself)"    | **REQUIRED**    |
+| RAINFOREST_PASS     | "your rainforest password"                           | **REQUIRED**    |
 
-# Example Usage
+## Example Usage
 
-`docker run terafin/mqtt-rainforest-bridge -e TOPIC_PREFIX="/energyusage/home" -e RAINFOREST_IP="0x1234" -e RAINFOREST_PASS="mysecretpassword!" -e RAINFOREST_IP="10.0.1.100" -e MQTT_HOST="mqtt://mymqtt.local.address"`
+Here's a full docker flow you can use to pull the latest image, delete the old one, and create a new container named 'mqtt-rainforest-bridge':
 
-This will spin up a working rainforest bridge to a device at IP 10.0.1.100, which will start sending the following MQTT messages:
+* `docker pull terafin/mqtt-rainforest-bridge:latest`
+* `docker rm -f mqtt-rainforest-bridge`
+* `docker run -d -e TOPIC_PREFIX='/energyusage/home' -e RAINFOREST_IP='0x1234' -e RAINFOREST_PASS='mysecretpassword!' -e RAINFOREST_IP='10.0.1.100' -e MQTT_HOST='mqtt://mymqtt.local.address' --name='mqtt-rainforest-bridge' terafin/mqtt-rainforest-bridge:latest`
 
-# MQTT results
+This will spin up a working rainforest bridge to a device at IP 10.0.1.100, which will start sending the MQTT messages below
+
+To look at the logging output, you can:
+
+* `docker logs -f mqtt-rainforest-bridge`
+
+## MQTT results
 
 Here's some sample (from my system) results after using the above setup:
+
+*Note: These will be polled and updated every 5 seconds.*
 
     /energyusage/home/meter_status Connected
     /energyusage/home/demand 0
@@ -41,5 +51,3 @@ Here's some sample (from my system) results after using the above setup:
     /energyusage/home/threshold_lower_demand -14.967000
     /energyusage/home/fast_poll_frequency 0x00
     /energyusage/home/fast_poll_endtime 0x00000000
-
-These will be polled and updated every 5 seconds.

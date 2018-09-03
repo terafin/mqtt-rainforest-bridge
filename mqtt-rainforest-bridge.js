@@ -3,42 +3,50 @@ const mqtt = require('mqtt')
 const _ = require('lodash')
 
 const logging = require('homeautomation-js-lib/logging.js')
-const rainforest = require('homeautomation-js-lib/rainforest.js')
+const rainforest = require('./lib/rainforest.js')
 const health = require('homeautomation-js-lib/health.js')
 
 require('homeautomation-js-lib/mqtt_helpers.js')
 
 
 // Config
-const rainforest_topic = process.env.RAINFOREST_TOPIC
+const rainforest_topic = process.env.TOPIC_PREFIX
+
+if (_.isNil(rainforest_topic)) {
+	logging.warn('TOPIC_PREFIX not set, aborting')
+	process.abort()
+}
 
 // Setup MQTT
 const client = mqtt.setupClient(null, null)
 
 rainforest.on('energy-updated', (result) => {
-    logging.info('Rainforest updated: ' + Object.keys(result))
+	const resultKeys = _.isNil(result) ? null : Object.keys(result)
+	logging.info('Rainforest updated: ' + resultKeys)
 
-    if (client.connected)
-        health.healthyEvent()
+	if ( _.isNil(resultKeys) ) {
+		health.unhealthyEvent()
+		return
+	}
 
-    Object.keys(result).forEach(
-        function(key) {
-            if (key === 'demand_timestamp') return
+	if (client.connected) {
+		health.healthyEvent()
+	}
 
-            var value = result[key]
+	resultKeys.forEach(
+		function(key) {
+			if (key === 'demand_timestamp') { 
+				return 
+			}
 
-            if (key === 'demand')
-                value = Number(value) * 1000
+			var value = result[key]
 
-            logging.info(' ' + key + ':' + value)
-            client.smartPublish(rainforest_topic + '/' + key, '' + value)
-        }
-    )
+			if (key === 'demand') {
+				value = Number(value) * 1000 
+			}
+
+			logging.debug(' ' + key + ':' + value)
+			client.smartPublish(rainforest_topic + '/' + key, '' + value)
+		}
+	)
 })
-
-const healthCheckPort = process.env.HEALTH_CHECK_PORT
-const healthCheckTime = process.env.HEALTH_CHECK_TIME
-const healthCheckURL = process.env.HEALTH_CHECK_URL
-if (!_.isNil(healthCheckPort) && !_.isNil(healthCheckTime) && !_.isNil(healthCheckURL)) {
-    health.startHealthChecks(healthCheckURL, healthCheckPort, healthCheckTime)
-}

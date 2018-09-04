@@ -15,6 +15,9 @@
         "lodash": "latest",
         "repeat": "latest",
         "request": "latest",
+        "express": "latest",
+        "body-parser": "latest",
+        "body-parser-xml": "latest",
         "mqtt": "latest"
     },
     "engines": {

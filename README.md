@@ -7,14 +7,14 @@
 |---------------------| -----------------------------------------------------| --------------- |
 | MQTT_HOST           | "mqtt://your-mqtt.server.here"                       | **REQUIRED**    |
 | MQTT_USER           | "mqtt username"                                      | *OPTIONAL*      |
-| MQTT_PASS           | "mqtt username"                                      | *OPTIONAL*      |
+| MQTT_PASS           | "mqtt password"                                      | *OPTIONAL*      |
 | TOPIC_PREFIX        | "/your/topic/prefix"                                 | **REQUIRED**    |
 | RAINFOREST_IP       | YOUR.RAINFOREST.IP.OR.HOSTNAME                       | *OPTIONAL*      |
 | RAINFOREST_MAC      | "your rainforest eagle Zigbee MAC"                   | *OPTIONAL*      |
 | RAINFOREST_USER     | "your rainforest username (on the device itself)"    | *OPTIONAL*      |
 | RAINFOREST_PASS     | "your rainforest password"                           | *OPTIONAL*      |
-| LISTENING_PORT      | "your rainforest username (on the device itself)"    | *OPTIONAL*      |
-| LISTENING_PATH      | "your rainforest password"                           | *OPTIONAL*      |
+| LISTENING_PORT      | "32000"                                              | *OPTIONAL*      |
+| LISTENING_PATH      | "/rainforest/data"                                   | *OPTIONAL*      |
 
 ## Modes
 

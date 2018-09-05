@@ -30,7 +30,7 @@ Here's a full docker flow you can use to pull the latest image, delete the old o
 
 * `docker pull terafin/mqtt-rainforest-bridge:latest`
 * `docker rm -f mqtt-rainforest-bridge`
-* `docker run -d -e TOPIC_PREFIX='/energyusage/home' -e LISTENING_PORT='32000' -e LISTENING_PATH='/rainforest/data' -e MQTT_HOST='mqtt://mymqtt.local.address' --name='mqtt-rainforest-bridge' terafin/mqtt-rainforest-bridge:latest`
+* `docker run -d -p 32000:32000 -e TOPIC_PREFIX='/energyusage/home' -e LISTENING_PORT='32000' -e LISTENING_PATH='/rainforest/data' -e MQTT_HOST='mqtt://mymqtt.local.address' --name='mqtt-rainforest-bridge' terafin/mqtt-rainforest-bridge:latest`
   
 This will spin up a working rainforest HTTP PUT endpoint at port 32000, with path /rainforest/data, which will start sending the MQTT messages below
 
@@ -44,7 +44,7 @@ Here's a full docker flow you can use to pull the latest image, delete the old o
 
 * `docker pull terafin/mqtt-rainforest-bridge:latest`
 * `docker rm -f mqtt-rainforest-bridge`
-* `docker run -d -e TOPIC_PREFIX='/energyusage/home' -e RAINFOREST_USER='0x1234' -e RAINFOREST_PASS='mysecretpassword!' -e RAINFOREST_IP='10.0.1.100' -e RAINFOREST_MAC='0xdeadbeef00000abcd' -e MQTT_HOST='mqtt://mymqtt.local.address' --name='mqtt-rainforest-bridge' terafin/mqtt-rainforest-bridge:latest`
+* `docker run -d -p 32000:32000 -e TOPIC_PREFIX='/energyusage/home' -e RAINFOREST_USER='0x1234' -e RAINFOREST_PASS='mysecretpassword!' -e RAINFOREST_IP='10.0.1.100' -e RAINFOREST_MAC='0xdeadbeef00000abcd' -e MQTT_HOST='mqtt://mymqtt.local.address' --name='mqtt-rainforest-bridge' terafin/mqtt-rainforest-bridge:latest`
 
 
 This will spin up a working rainforest bridge to a device at IP 10.0.1.100, which will start sending the MQTT messages below

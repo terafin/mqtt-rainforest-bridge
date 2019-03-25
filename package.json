@@ -11,14 +11,14 @@
         "start": "node mqtt-rainforest-bridge.js"
     },
     "dependencies": {
-        "homeautomation-js-lib": "git://github.com/terafin/homeautomation-js-lib.git",
-        "lodash": "latest",
-        "repeat": "latest",
-        "request": "latest",
-        "express": "latest",
         "body-parser": "latest",
         "body-parser-xml": "latest",
-        "mqtt": "latest"
+        "express": "latest",
+        "homeautomation-js-lib": "git://github.com/terafin/homeautomation-js-lib.git",
+        "lodash": "^4.17.11",
+        "mqtt": "latest",
+        "repeat": "0.0.6",
+        "request": "latest"
     },
     "engines": {
         "node": ">=4"

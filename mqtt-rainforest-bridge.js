@@ -5,8 +5,7 @@ const _ = require('lodash')
 const logging = require('homeautomation-js-lib/logging.js')
 const rainforest = require('./lib/rainforest.js')
 const health = require('homeautomation-js-lib/health.js')
-
-require('homeautomation-js-lib/mqtt_helpers.js')
+const mqtt_helpers = require('homeautomation-js-lib/mqtt_helpers.js')
 
 
 // Config
@@ -18,7 +17,7 @@ if (_.isNil(rainforest_topic)) {
 }
 
 // Setup MQTT
-const client = mqtt.setupClient(null, null)
+const client = mqtt_helpers.setupClient(null, null)
 
 rainforest.on('energy-updated', (result) => {
 	const resultKeys = _.isNil(result) ? null : Object.keys(result)

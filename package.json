@@ -14,8 +14,8 @@
         "body-parser": "latest",
         "body-parser-xml": "latest",
         "express": "latest",
-        "homeautomation-js-lib": "git+https://gitlab.siliconspirit.net/home/homeautomation-js-lib.git",
-        "lodash": "^4.17.11",
+        "homeautomation-js-lib": "https://github.com/terafin/homeautomation-js-lib.git",
+        "lodash": "^4.17.15",
         "mqtt": "latest",
         "repeat": "0.0.6",
         "request": "latest"

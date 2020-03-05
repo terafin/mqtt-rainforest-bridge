@@ -1,26 +1,26 @@
 {
-    "name": "mqtt-rainforest-bridge",
-    "version": "0.0.1",
-    "description": "Bridge Rainforest Energy Monitor via HTTP to MQTT",
-    "license": "MIT",
-    "main": "mqtt-rainforest-bridge.js",
-    "repository": {
-        "url": "https://github.com/terafin/mqtt-rainforest-bridge"
-    },
-    "scripts": {
-        "start": "node mqtt-rainforest-bridge.js"
-    },
-    "dependencies": {
-        "body-parser": "latest",
-        "body-parser-xml": "latest",
-        "express": "latest",
-        "homeautomation-js-lib": "https://github.com/terafin/homeautomation-js-lib.git",
-        "lodash": "^4.17.15",
-        "mqtt": "latest",
-        "repeat": "0.0.6",
-        "request": "2.88.2"
-    },
-    "engines": {
-        "node": ">=4"
-    }
+  "name": "mqtt-rainforest-bridge",
+  "version": "0.0.1",
+  "description": "Bridge Rainforest Energy Monitor via HTTP to MQTT",
+  "license": "MIT",
+  "main": "mqtt-rainforest-bridge.js",
+  "repository": {
+    "url": "https://github.com/terafin/mqtt-rainforest-bridge"
+  },
+  "scripts": {
+    "start": "node mqtt-rainforest-bridge.js"
+  },
+  "dependencies": {
+    "body-parser": "latest",
+    "body-parser-xml": "latest",
+    "express": "latest",
+    "homeautomation-js-lib": "https://github.com/terafin/homeautomation-js-lib.git",
+    "lodash": "^4.17.15",
+    "mqtt": "latest",
+    "repeat": "0.0.6",
+    "request": "2.88.2"
+  },
+  "engines": {
+    "node": ">=4"
+  }
 }
